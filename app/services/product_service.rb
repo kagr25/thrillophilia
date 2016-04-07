@@ -1,3 +1,4 @@
+require "sequel"
 class ProductService
 
   def initialize(product, tags, categories, images)
@@ -27,9 +28,9 @@ class ProductService
   	@product = Product.find(id)
   	if @product.update({price: @price, expire_date: date_to_time, name: @name, sku_id: @sku_id})
   		{message: "Added Successfully", status: true}
-	else
-		{message: "Some issue Occur", status: false}
-	end
+  	else
+  		{message: "Some issue Occur", status: false}
+  	end
   end
 
   private
@@ -44,7 +45,7 @@ class ProductService
   end
 
   def add_images
-  	@images.collect{|img| Image.new(path: img[:image_path])}
+  	@images.collect{|img| Image.new(path: img[:image_path], :avatar => File.new(open(img[:image_path]), 'r'))}
   end
 
   def add_categories

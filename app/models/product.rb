@@ -8,7 +8,8 @@ class Product < ActiveRecord::Base
 			name: self.name,
 			sku_id: self.sku_id,
 			price: self.price,
-			image: self.images.first.path
+			image: self.images.first.path,
+			avatar: self.images.first.avatar
 		}
 	end
 end
