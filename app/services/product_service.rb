@@ -1,4 +1,4 @@
-require "sequel"
+require 'open-uri'
 class ProductService
 
   def initialize(product, tags, categories, images)

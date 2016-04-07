@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-		debugger
 		@product = ProductService.new(params[:product], params[:tags], params[:categories], params[:images])
 		status = @product.update(params[:id])
 		render json: {message: status[:message]}, status: status[:status] ? 200 : 400
